@@ -1,14 +1,39 @@
 from cell import Cell
 from PIL import Image, ImageDraw
 from json import dump
+from json import load
 import random
 
 class Grid(object):
-    def __init__(self, rows, columns):
-        self.rows = rows
-        self.columns = columns
-        self.grid = self.prepare_grid()
-        self.configure_cells()
+    def __init__(self, rows, columns, filename=None):
+        if filename is None:
+            self.rows = rows
+            self.columns = columns
+            self.grid = self.prepare_grid()
+            self.configure_cells()
+        else:
+            with open(filename) as fdata:
+                jsondata = load(fdata)
+            self.rows = jsondata['rows']
+            self.columns = jsondata['cols']
+            self.grid = self.prepare_grid()
+            for row in self.each_row():
+                for cell in row:
+                    key = f'{cell}'
+                    row, col = cell.row, cell.column
+                    cell.cellNorth = self[row - 1, col]
+                    cell.cellSouth = self[row + 1, col]
+                    cell.cellWest = self[row, col - 1]
+                    cell.cellEast = self[row, col + 1]
+
+                    if jsondata['cells'][key]['neighbors'][0]:
+                        cell.link(self[row - 1, col])
+                    if jsondata['cells'][key]['neighbors'][1]:
+                        cell.link(self[row, col + 1])
+                    if jsondata['cells'][key]['neighbors'][2]:
+                        cell.link(self[row + 1, col])
+                    if jsondata['cells'][key]['neighbors'][3]:
+                        cell.link(self[row, col - 1])
 
     def size(self):
         return self.rows*self.columns
@@ -52,6 +77,7 @@ class Grid(object):
             return self.grid[row][col]
         return None
 
+    @property
     def grid_cells(self):
         """ Imprime el tablero mostrando las coordenadas de cada celda """
         s = ""
@@ -62,7 +88,8 @@ class Grid(object):
             s = s + ' '.join(L) + '\n'
         return s
 
-    def contents_of(self, cell):
+    @staticmethod
+    def contents_of(cell):
         """ Devuelve el contenido de un objeto celda"""
         return " "
 
@@ -113,4 +140,6 @@ class Grid(object):
 
         with open(f'Lab_{self.rows}_{self.columns}.json', 'w') as outfile:
             dump(output, outfile)
+
+
 
