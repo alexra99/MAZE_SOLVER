@@ -89,11 +89,9 @@ if __name__ == "__main__":
                 print('laberinto de ' + str(nRows) + ' filas y ' + str(nColumns) + ' columnas generado correctamente.')
                 print('Imagen y fichero .json guardados en el directorio actual.')
 
-
         elif option == 2:
             file = str(input('Introduzca ruta del fichero:'))
             g = Grid(0, 0, file)
-            Wilson.create(g)
             g.save_image()
             print('Pintando laberinto...')
             print('Laberinto creado, Imagen guardada en el directorio actual.')

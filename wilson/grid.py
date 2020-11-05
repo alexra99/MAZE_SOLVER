@@ -141,5 +141,5 @@ class Grid(object):
         with open(f'Lab_{self.rows}_{self.columns}.json', 'w') as outfile:
             dump(output, outfile)
 
-
+    
 
