@@ -141,5 +141,27 @@ class Grid(object):
         with open(f'Lab_{self.rows}_{self.columns}.json', 'w') as outfile:
             dump(output, outfile)
 
-    
+    def problem_json(self):
+        """Escribir el problema en un json"""
+        output = {
+            "INITIAL": str(self.random_cell()),
+            "OBJECTIVE": str(self.random_cell()),
+            "MAZE": 'maze' + str(self.rows) + 'x' + str(self.columns) + '.json'
+        }
+        with open(f'sucesores_{self.rows}_{self.columns}.json', 'w') as outfile:
+            dump(output, outfile)
 
+    def sucesors_function(self):
+        """Escribe la función sucesores del laberitno"""
+        suc = []
+        for r in range(self.rows):
+            for columns in range(self.columns):
+                if self.grid[r][columns].isLinked(self.grid[r][columns].cellNorth):
+                    suc.append[str(('N' + r + columns + '1'))]
+                if self.grid[r][columns].isLinked(self.grid[r][columns].cellEast):
+                    suc.append[str(('E' + r + columns + '1'))]
+                if self.grid[r][columns].isLinked(self.grid[r][columns].cellSouth):
+                    suc.append[str(('S' + r + columns + '1'))]
+                if self.grid[r][columns].isLinked(self.grid[r][columns].cellWest):
+                    suc.append[str(('O' + r + columns + '1'))]
+                print(suc)

@@ -45,6 +45,9 @@ class Wilson:
                     unvisited.remove(prev)
                 prev = cell
 
+        # Elige una casilla de inicio y de salida del laberinto
+        inicio = grid.random_cell()
+        fin = grid.random_cell()
 def chooseOption():
     correct = False
     num = 0
@@ -56,7 +59,6 @@ def chooseOption():
             print('Error, introduce un numero entero')
 
     return num
-
 
 def menu():
     print("1. Generar Laberinto")
@@ -86,18 +88,22 @@ if __name__ == "__main__":
                 Wilson.create(g)
                 g.save_image()
                 g.save_json()
-                print('laberinto de ' + str(nRows) + ' filas y ' + str(nColumns) + ' columnas generado correctamente.')
+                print('Laberinto de ' + str(nRows) + ' filas y ' + str(nColumns) + ' columnas generado correctamente.')
                 print('Imagen y fichero .json guardados en el directorio actual.')
+                g.problem_json()
+                g.sucesors_function()
 
         elif option == 2:
             file = str(input('Introduzca ruta del fichero:'))
             g = Grid(0, 0, file)
+            g.problem_json()
             g.save_image()
             print('Pintando laberinto...')
             print('Laberinto creado, Imagen guardada en el directorio actual.')
+
         elif option == 3:
             exit = True
         else:
-            print("Introduce un numero entre 1 y 3")
+            print("Introduce un número entre 1 y 3")
 
     print("Has salido del programa con éxito")
