@@ -7,6 +7,9 @@ from decimal import Decimal
 
 
 def load_problem(filename):
+    '''
+    Cargar un problema desde un archivo.json
+    '''
     with open(filename) as fdata:
         jsondata = load(fdata)
     a = str(jsondata['INITIAL'])
@@ -17,11 +20,18 @@ def load_problem(filename):
     return initial, end, g
 
 def successor(cell):
+    '''
+    Devuelve lista de sucesores de una celda
+    '''
     list_successor = list()
     return list_successor
 
 
 def get_sucessor_nodes(current_node, g, list_sucessors, all_succesor, strategy, end):
+    '''
+    Obtener nodos sucesores con valores actualizados
+    '''
+
     list_nodes = []
     value = 0
     for sucessor in list_sucessors:
@@ -52,6 +62,9 @@ def get_sucessor_nodes(current_node, g, list_sucessors, all_succesor, strategy, 
 
 
 def expandir(current_node, g, visited, expanded, frontier, all_succesor, strategy, end):
+    '''
+    Función para expandir nodos
+    '''
     list_sucesores = get_sucessor_nodes(current_node, g, current_node.state.neighbors_format(), all_succesor, strategy, end)
     if strategy == 2:
         for sucesor in list_sucesores:
@@ -70,12 +83,18 @@ def expandir(current_node, g, visited, expanded, frontier, all_succesor, strateg
 
      
 def get_node_by_id(id, path):
+    '''
+    Obtener nodos por id.
+    '''
     for state in path:
         if state.ID == id:
             return state
     return None
 
 def push_frontier(frontier, node):
+    '''
+    Función para ordenar la frontera y extraer el nodo correspondiente.
+    '''
     if (frontier.is_empty()):
         frontier.push(node)
     else:
@@ -103,6 +122,10 @@ def push_frontier(frontier, node):
             x= x-1
 
 def solution(filename):
+    '''Función en la que dada una estrategia de entrada, se realiza el algortimo de búsqueda 
+       y seconstruye la solución de forma backward.
+    '''
+
     initial, end, g = load_problem(filename)
     w, height = g.dimensions()
     all_succesor = []

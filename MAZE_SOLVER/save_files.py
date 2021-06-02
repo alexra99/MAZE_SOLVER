@@ -5,9 +5,14 @@ from json import load
 import random
 
 class Save:
+    '''
+    Define los métodos necesarios para manejar y guardar los ficheros .json
+    '''
     
     def save_json(self):
-        """Generar el json con el formato dado"""
+        '''
+        Generar el archivo json con el formato dado"
+        '''
         output = {
             "rows": self.rows,
             "cols": self.columns,
@@ -32,6 +37,9 @@ class Save:
 
 
     def save_json_problem(self):
+        '''
+        Generar un problema y guardarlo en un archivo .json
+        '''
         objetive_r = self.rows-1
         objetive_c = self.columns-1 
         output = {

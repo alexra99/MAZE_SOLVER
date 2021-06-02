@@ -1,8 +1,12 @@
 class Cell:
     """
-    Definition of a grid cell
+    Definición de una celda del tablero.
     """
+
     def __init__(self, row, column):
+        '''
+        Constructor de una celda.
+        '''
         self.row = row
         self.column = column
         self.cellNorth = None
@@ -13,18 +17,30 @@ class Cell:
         self.links = dict()
 
     def setValue(self, value):
+        '''
+        Modificar value.
+        '''
         self.value = value
 
     def getValue(self):
+        '''
+        Obtener value.
+        '''
         return self.value
 
     def link(self, cell, bidir=True):
+        '''
+        Unir celda
+        '''
         self.links[cell] = True
         if bidir == True:
             cell.link(self, False)
         return self
 
     def unlink(self, cell, bidir=True):
+        '''
+        Romper unión de una celda
+        '''
         del self.links[cell]
         if bidir == True:
             cell.unlink(self, False)
@@ -32,29 +48,34 @@ class Cell:
 
     def getLinks(self):
         """
-        Return all cells linked to this cell
-        Returns: List of keys
+        Obtener uniones de una celda
         """
         return self.links.keys()
 
     def isLinked(self, cell):
-        """ Find out if <cell> is linked to this cell
-        Returns: True, False
+        """ 
+        Determinar si una celda esta unida a otra
         """
         return cell in self.links
 
     def neighbors(self):
-        """ Return a list of all cells neighboring this cell 
+        """ 
+        Obtener lista de celdas vecinas
         """
         n = []
-        if self.cellNorth: n.append(self.cellNorth) 
-        if self.cellSouth: n.append(self.cellSouth)
-        if self.cellWest: n.append(self.cellWest)
-        if self.cellEast: n.append(self.cellEast)
+        if self.cellNorth:
+            n.append(self.cellNorth)
+        if self.cellSouth:
+            n.append(self.cellSouth)
+        if self.cellWest:
+            n.append(self.cellWest)
+        if self.cellEast:
+            n.append(self.cellEast)
         return n
 
     def neighbors_format(self):
-        """ Return a list of all cells neighboring this cell
+        """ 
+        Obtener lista de celdas vecinas en el siguiente formato: N, E, S, O.
         """
         n = []
         if self.isLinked(self.cellNorth):
@@ -68,10 +89,14 @@ class Cell:
         return n
 
     def get_tuple(self):
+        '''
+        Obtener una tupla fila, columna.
+        '''
         return (self.row, self.column)
 
-    
-
     def __str__(self):
+        '''
+        Metodo de impresión de una celda.
+        '''
         s = "("+str(self.row)+", "+str(self.column)+")"
         return s
