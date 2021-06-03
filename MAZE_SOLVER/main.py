@@ -8,7 +8,7 @@ from solveproblem import solution
 
 
 def mainMenu():
-    '''
+    """
     Menu principal del programa, ofrece las siguientes opciones:
         1. Generar laberinto.
         2. Cargar laberinto.
@@ -16,7 +16,7 @@ def mainMenu():
         4. Resolver Problema.
         5. Salir.
     En función del valor de entrada por teclado se realizará una opción u otra.
-    '''
+    """
     
     salir = False
     while not(salir):
@@ -118,9 +118,9 @@ def mainMenu():
             print("Opción incorrecta")
 
 if __name__ == '__main__':
-    '''
+    """
     Ejecución del metodo con las funciones del menú principal.
-    '''
+    """
     mainMenu()
     
 

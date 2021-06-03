@@ -2,14 +2,14 @@ from grid import Grid
 from random import choice, seed
 
 class Wilson:
-    '''
+    """
     Se definen las funciones necesarias para crear laberintos con el 
     algoritmo de Wilson.
-    '''
+    """
     
     @staticmethod
     def create(grid):
-        '''
+        """
         Método estático para crear el laberinto con el algoritmo de Wilson.
         Funcionamiento:
             # Inicializa todas las celdas a no visitadas
@@ -19,11 +19,11 @@ class Wilson:
             # Continúa seleccionando celdas vecinas de forma aleatoria hasta llegar a una celda visitada
             # Une todas las celdas que se han encotrado con el metodo link.
 
-        '''
+        """
         def sample(lst):
-            '''
+            """
             Selecciona elemento a aleatorio de la lista.
-            ''' 
+            """ 
             if len(lst) == 0:
                 return None
             return choice(lst)

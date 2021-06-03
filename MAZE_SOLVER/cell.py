@@ -4,9 +4,9 @@ class Cell:
     """
 
     def __init__(self, row, column):
-        '''
-        Constructor de una celda.
-        '''
+        """
+             Constructor de una celda.
+        """
         self.row = row
         self.column = column
         self.cellNorth = None
@@ -17,30 +17,30 @@ class Cell:
         self.links = dict()
 
     def setValue(self, value):
-        '''
+        """
         Modificar value.
-        '''
+        """
         self.value = value
 
     def getValue(self):
-        '''
+        """
         Obtener value.
-        '''
+        """
         return self.value
 
     def link(self, cell, bidir=True):
-        '''
+        """
         Unir celda
-        '''
+        """
         self.links[cell] = True
         if bidir == True:
             cell.link(self, False)
         return self
 
     def unlink(self, cell, bidir=True):
-        '''
+        """
         Romper unión de una celda
-        '''
+        """
         del self.links[cell]
         if bidir == True:
             cell.unlink(self, False)
@@ -89,14 +89,14 @@ class Cell:
         return n
 
     def get_tuple(self):
-        '''
+        """
         Obtener una tupla fila, columna.
-        '''
+        """
         return (self.row, self.column)
 
     def __str__(self):
-        '''
+        """
         Metodo de impresión de una celda.
-        '''
+        """
         s = "("+str(self.row)+", "+str(self.column)+")"
         return s

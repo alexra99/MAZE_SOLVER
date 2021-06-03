@@ -1,11 +1,12 @@
 class Menu:
-    '''
+    """
     Se definen los disintos tipos de menús que se utilizan en el programa.
-    '''
+    """
+    @staticmethod
     def chooseOption(option):
-        '''
+        """
         Introducir opciones del menú principal controlando valores erróneos.
-        '''
+        """
         correct = False
         num = 0
         while (not correct):
@@ -19,9 +20,9 @@ class Menu:
 
 
     def showMenu():
-        '''
+        """
         Muestra las opciones disponibles del menú principal.
-        '''
+        """
         print("-----MAZE-SOLVER-----")
         print("1. Generar laberinto")
         print("2. Cargar laberinto")
@@ -31,9 +32,9 @@ class Menu:
     
 
     def giveDimension():
-        '''
+        """
         Entrada de valores para filas y columnas controlando valores erróneos.
-        '''
+        """
         correct = False
         while (correct == False):
             try:
@@ -46,9 +47,9 @@ class Menu:
                 print('valor de entrada no válido')
 
     def showStrategies():
-        '''
+        """
         Muestra las estrategias disponibles para resolver los laberintos.
-        '''
+        """
         print("\nESTRATEGIAS DISPONIBLES PARA RESOLVER LABERINTO:")
         print("1. Anchura")
         print("2. Profundidad")
