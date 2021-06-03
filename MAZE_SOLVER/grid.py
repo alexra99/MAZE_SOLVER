@@ -1,5 +1,4 @@
 from cell import Cell
-from PIL import Image, ImageDraw
 from json import dump
 from frontier import Frontier
 from node import Node
