@@ -1,5 +1,4 @@
 from grid import Grid
-from PIL import Image, ImageDraw
 from json import dump
 from json import load
 import random
