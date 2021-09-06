@@ -1,5 +1,5 @@
 # MAZE-SOLVER
-Repositorio para las prácticas de Inteligentes del grupo C1-8 formado por:
+Repositorio para las prácticas de Inteligentes del grupo C1-8 formado por: <br />
   -Alejandro Ruiz Aranda<br />
   -Jesús Santiyán Reviriego<br />
 # ACERCA DE
